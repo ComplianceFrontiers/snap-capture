@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import axios from "axios"; // Import axios for API requests
+import axios from "axios";
+import ConfirmUser from "../confirmUser/confirmUser";
 import "./visitor.css";
 
 const Visitor = ({ onBack }) => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const [users, setUsers] = useState([]); // Store users
 
   const handleContinue = async () => {
     if (!phone) {
@@ -19,12 +21,12 @@ const Visitor = ({ onBack }) => {
 
     try {
       const response = await axios.post("https://snap-capture-backend.vercel.app/signin", {
-        phone: phone
+        phone: phone,
       });
 
       if (response.data.success) {
         setMessage("Sign-in successful!");
-        console.log("User Data:", response.data.users);
+        setUsers(response.data.users); // Store users in state
       } else {
         setError(response.data.error || "Something went wrong.");
       }
@@ -33,6 +35,11 @@ const Visitor = ({ onBack }) => {
       console.error("API Error:", error);
     }
   };
+
+  // If users are found, show UserSelection
+  if (users.length > 0) {
+    return <ConfirmUser users={users} />;
+  }
 
   return (
     <div className="visitor-container">
