@@ -1,8 +1,16 @@
-import React from "react";
-import { FaArrowLeft } from "react-icons/fa"; // Importing back arrow icon
-import "../UserSelection/UserSelection.css"; // Import SCSS file
+import React, { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+ import Visitor from "../visitor/visitor"; // Import UserSelection component
+
+import "./UserSelection.css";
 
 const UserSelection = () => {
+  const [showVisitor, setShowVisitor] = useState(false);
+
+  if (showVisitor) {
+    return <Visitor onBack={() => setShowVisitor(false)} />;
+  }
+
   return (
     <div className="selection-container">
       {/* Back Button */}
@@ -13,7 +21,9 @@ const UserSelection = () => {
       <div className="grid-container">
         <div className="selection-box">Registered Adult</div>
         <div className="selection-box">BOTS V5 Student</div>
-        <div className="selection-box">Visitor</div>
+        <div className="selection-box" onClick={() => setShowVisitor(true)}>
+          Visitor
+        </div>
         <div className="selection-box">BOTS IQ Student</div>
       </div>
     </div>
