@@ -33,6 +33,13 @@
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
+ 
+
+.single-user {
+  display: flex;
+  justify-content: center;
+}
+
 
 .selection-box {
   margin-top: 20px;

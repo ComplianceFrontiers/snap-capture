@@ -18,37 +18,76 @@
   margin-right: 5px;
 }
 
-/* Phone Number Input */
+/* Phone Input */
 .phone-input-container {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.phone-input-container label {
-  font-size: 16px;
-  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .phone-input-container input {
-  display: block;
-  width: 100%;
-  max-width: 300px;
+  width: 250px;
   padding: 10px;
-  margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
 }
 
-/* Continue Button */
-.button-container {
-  width: 100%;
+.check-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: blue;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.check-button:hover {
+  background-color: darkblue;
+}
+
+/* User List - Display in boxes */
+.user-list {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
   margin-top: 20px;
 }
 
-.continue-button {
+.user-box {
+  background-color: #f4f4f4;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.user-box:hover {
+  background-color: #ddd;
+}
+
+/* Signup Section */
+.signup-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signup-message {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.signup-button {
+  margin-top: 10px;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -60,6 +99,31 @@
   transition: 0.3s ease;
 }
 
-.continue-button:hover {
+.signup-button:hover {
   background-color: darkgreen;
+}
+/* Suggestions Container */
+.suggestions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Individual Suggestion Box */
+.suggestion-box {
+  background-color: #f4f4f4;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  min-width: 150px;
+}
+
+.suggestion-box:hover {
+  background-color: #ddd;
 }

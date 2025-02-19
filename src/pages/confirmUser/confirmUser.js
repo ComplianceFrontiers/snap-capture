@@ -29,8 +29,10 @@ const ConfirmUser = ({ users }) => {
       <div className="back-button" onClick={() => setShowVisitor(true)}>
         <span className="back-icon">←</span> Back
       </div>
-      <h2>Select Your Profile</h2>
-      <div className="grid-container">
+      <h2>Confirm Profile</h2>
+      <div
+  className={`grid-container ${users.length === 1 ? "single-user" : ""}`}
+>
         {users.map((user) => (
           <div
             key={user.user_id}

@@ -39,10 +39,10 @@ const Visitor = ({ onBack }) => {
     }
   };
 
-  const handleSelectSuggestion = (selectedPhone) => {
-    setPhone(selectedPhone); // Autofill input field
-    setSuggestions([]); // Hide suggestions after selection
+  const handleSelectSuggestion = (selectedUser) => {
+    setUsers([selectedUser]); // Store the selected user in state
   };
+  
 
   const handleContinue = async () => {
     if (!phone) {
@@ -94,17 +94,21 @@ const Visitor = ({ onBack }) => {
           onChange={(e) => setPhone(e.target.value)}
         />
         {loading && <p className="loading-text">Searching...</p>}
-
-        {/* Suggestions Dropdown */}
         {suggestions.length > 0 && (
-          <ul className="suggestions-dropdown">
-            {suggestions.map((user) => (
-              <li key={user.user_id} onClick={() => handleSelectSuggestion(user.phone)}>
-                {user.phone} - {user.first_name} {user.last_name}
-              </li>
-            ))}
-          </ul>
-        )}
+  <div className="suggestions-container">
+    {suggestions.map((user) => (
+      <div 
+        key={user.user_id} 
+        className="suggestion-box" 
+        onClick={() => handleSelectSuggestion(user)}
+      >
+         {user.first_name} {user.last_name}
+      </div>
+    ))}
+  </div>
+)}
+
+
       </div>
 
       {/* Error / Success Message */}
