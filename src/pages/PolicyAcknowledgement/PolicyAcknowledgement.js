@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../PolicyAcknowledgement/PolicyAcknowledgement.css";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import { IoArrowBack } from "react-icons/io5";
+import { IoIosArrowBack } from "react-icons/io";
 
 const PolicyAcknowledgement = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -10,7 +10,7 @@ const PolicyAcknowledgement = () => {
     <div className="policy-container">
       {/* Back Button */}
       <div className="back-button">
-        <IoArrowBack size={24} />
+        <IoIosArrowBack size={24} />
       </div>
 
       {/* Policy Content */}
