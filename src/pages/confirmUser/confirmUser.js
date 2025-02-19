@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./confirmUser.css"; // Reuse same CSS for styling
+import "../confirmUser/confirmUser.css"; // Reuse same CSS for styling
 
 const ConfirmUser = ({ users }) => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -10,23 +10,27 @@ const ConfirmUser = ({ users }) => {
       return;
     }
     alert(`User confirmed: ${selectedUser.first_name} ${selectedUser.last_name}`);
-    // Proceed with login (store user in state or navigate)
   };
 
   return (
-    <div className="user-selection-container">
+    <div className="selection-container">
+      <div className="back-button">
+        <span className="back-icon">←</span> Back
+      </div>
       <h2>Select Your Profile</h2>
-      <div className="user-grid">
+      <div className="grid-container">
         {users.map((user) => (
           <div
             key={user.user_id}
-            className={`user-box ${selectedUser?.user_id === user.user_id ? "selected" : ""}`}
+            className={`selection-box ${selectedUser?.user_id === user.user_id ? "selected" : ""}`}
             onClick={() => setSelectedUser(user)}
           >
-            <p><strong>{user.first_name} {user.last_name}</strong></p>
-            <p>Email: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            <p>Last Sign-in: {new Date(user.last_signin).toLocaleString()}</p>
+            <div className="user-content">
+              <p className="user-name">{user.first_name} {user.last_name}</p>
+              <p className="user-email">Email: {user.email}</p>
+              <p className="user-phone">Phone: {user.phone}</p>
+              <p className="user-signin">Last Sign-in: {new Date(user.last_signin).toLocaleString()}</p>
+            </div>
           </div>
         ))}
       </div>

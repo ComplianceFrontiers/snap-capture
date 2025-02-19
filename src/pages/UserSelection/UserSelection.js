@@ -25,12 +25,12 @@ const UserSelection = () => {
       </div>
 
       <div className="grid-container">
-        <div className="selection-box">Registered Adult</div>
-        <div className="selection-box">BOTS V5 Student</div>
-        <div className="selection-box" onClick={() => setActiveComponent("visitor")}>
+        <div className="selection-box1">Registered Adult</div>
+        <div className="selection-box1">BOTS V5 Student</div>
+        <div className="selection-box1" onClick={() => setActiveComponent("visitor")}>
           Visitor
         </div>
-        <div className="selection-box">BOTS IQ Student</div>
+        <div className="selection-box1">BOTS IQ Student</div>
       </div>
     </div>
   );
