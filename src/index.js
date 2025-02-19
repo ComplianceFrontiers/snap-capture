@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Signin from './pages/signin/signin'; // Corrected import
+import CapturePhoto from "./pages/capturePhoto/capturePhoto";
 import USerSelection from './pages/UserSelection/UserSelection';
 import POlicyAcknowledgement from './pages/PolicyAcknowledgement/PolicyAcknowledgement';
 
@@ -11,7 +12,7 @@ root.render(
   <React.StrictMode>
     {/* <POlicyAcknowledgement/> */}
     {/* <USerSelection /> */}
-    <Signin />
+    <CapturePhoto />
     {/* <App /> */}
   </React.StrictMode>
 );
