@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../confirmUser/confirmUser.css"; // Reuse same CSS for styling
+import Visitor from "../visitor/visitor";
 
 const ConfirmUser = ({ users }) => {
   const [selectedUser, setSelectedUser] = useState(null);
+  const [showVisitor, setShowVisitor] = useState(false);
 
   const handleConfirm = () => {
     if (!selectedUser) {
@@ -12,9 +14,12 @@ const ConfirmUser = ({ users }) => {
     alert(`User confirmed: ${selectedUser.first_name} ${selectedUser.last_name}`);
   };
 
+  if (showVisitor) {
+    return <Visitor />;
+  }
   return (
     <div className="selection-container">
-      <div className="back-button">
+      <div className="back-button" onClick={() => setShowVisitor(true)}>
         <span className="back-icon">←</span> Back
       </div>
       <h2>Select Your Profile</h2>

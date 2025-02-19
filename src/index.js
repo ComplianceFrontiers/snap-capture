@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     {/* <POlicyAcknowledgement/> */}
     {/* <USerSelection /> */}
-    <CapturePhoto />
+    <Signin />
     {/* <App /> */}
   </React.StrictMode>
 );
