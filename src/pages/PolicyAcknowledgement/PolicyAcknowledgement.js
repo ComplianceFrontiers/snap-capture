@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import "./PolicyAcknowledgement.css";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
+import CapturePhoto from "../capturePhoto/capturePhoto";
 
 const PolicyAcknowledgement = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [showNextComponent, setShowNextComponent] = useState(false);
+
+  // Function to show the next component
+  const handleContinue = () => {
+    if (isChecked) {
+      setShowNextComponent(true);
+    }
+  };
+
+  // If the next component is triggered, render it instead
+  if (showNextComponent) {
+    return <CapturePhoto />;
+  }
 
   return (
     <div className="policy-container">
@@ -40,13 +54,15 @@ const PolicyAcknowledgement = () => {
         </div>
 
         {/* Buttons */}
-        <div className="button-container">
-          <button className={`confirm-button ${isChecked ? "enabled" : "disabled"}`} disabled={!isChecked}>
+        <div className="button-container1">
+          <button
+            className={`confirm-button1 ${isChecked ? "enabled" : "disabled"}`}
+            disabled={!isChecked}
+            onClick={handleContinue} // Call handleContinue on click
+          >
             <FaCheck /> Continue
           </button>
-          <button className="cancel-button">
-            <FaTimes /> Cancel
-          </button>
+          
         </div>
       </div>
     </div>

@@ -56,14 +56,18 @@
     margin-right: 10px;
   }
   
-  .button-container {
+  .button-container1 {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center buttons */
+    gap: 20px; /* Add space between buttons */
     margin-top: 20px;
+    width: 100%; /* Ensure proper alignment */
   }
   
-  .confirm-button,
+  .confirm-button1,
   .cancel-button {
+    margin-left: 800px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,12 +79,13 @@
     border-radius: 5px;
   }
   
-  .confirm-button {
+  .confirm-button1 {
+    
     background-color: green;
     color: white;
   }
   
-  .confirm-button.disabled {
+  .confirm-button1.disabled {
     background-color: gray;
     cursor: not-allowed;
   }

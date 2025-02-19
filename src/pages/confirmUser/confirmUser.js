@@ -52,7 +52,7 @@ const ConfirmUser = ({ users }) => {
           </div>
         ))}
       </div>
-      <button className="confirm-button" onClick={handleConfirm}>
+      <button className="confirm-button2" onClick={handleConfirm}>
         Confirm Login
       </button>
     </div>
