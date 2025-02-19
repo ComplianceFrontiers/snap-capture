@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import ConfirmUser from "../confirmUser/confirmUser";
@@ -8,7 +8,41 @@ const Visitor = ({ onBack }) => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-  const [users, setUsers] = useState([]); // Store users
+  const [users, setUsers] = useState([]); // Store matching users
+  const [suggestions, setSuggestions] = useState([]); // Store phone suggestions
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (phone.length >= 3) {
+      fetchSuggestions(phone);
+    } else {
+      setSuggestions([]); // Clear suggestions when input is short
+    }
+  }, [phone]);
+
+  const fetchSuggestions = async (query) => {
+    setLoading(true);
+    try {
+      const response = await axios.post("https://snap-capture-backend.vercel.app/signin", {
+        phone: query,
+      });
+
+      if (response.data.success) {
+        setSuggestions(response.data.users);
+      } else {
+        setSuggestions([]);
+      }
+    } catch (error) {
+      console.error("Error fetching suggestions:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSelectSuggestion = (selectedPhone) => {
+    setPhone(selectedPhone); // Autofill input field
+    setSuggestions([]); // Hide suggestions after selection
+  };
 
   const handleContinue = async () => {
     if (!phone) {
@@ -36,7 +70,7 @@ const Visitor = ({ onBack }) => {
     }
   };
 
-  // If users are found, show UserSelection
+  // If users are found, show ConfirmUser component
   if (users.length > 0) {
     return <ConfirmUser users={users} />;
   }
@@ -59,6 +93,18 @@ const Visitor = ({ onBack }) => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
+        {loading && <p className="loading-text">Searching...</p>}
+
+        {/* Suggestions Dropdown */}
+        {suggestions.length > 0 && (
+          <ul className="suggestions-dropdown">
+            {suggestions.map((user) => (
+              <li key={user.user_id} onClick={() => handleSelectSuggestion(user.phone)}>
+                {user.phone} - {user.first_name} {user.last_name}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* Error / Success Message */}
