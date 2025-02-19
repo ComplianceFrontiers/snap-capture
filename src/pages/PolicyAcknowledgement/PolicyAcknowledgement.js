@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../PolicyAcknowledgement/PolicyAcknowledgement.css";
+import "./PolicyAcknowledgement.css";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 
