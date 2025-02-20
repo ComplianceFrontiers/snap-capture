@@ -112,10 +112,11 @@ function App({ user }) {
             <button className="capture-btn" onClick={takePhoto}>Capture</button>
           ) : (
             <>
+              <button className="close-btn" onClick={retakePhoto}>Retake</button>
+
               <button className="confirm-btn" onClick={confirmPhoto} disabled={isUploading}>
                 {isUploading ? "Uploading..." : "Confirm"}
               </button>
-              <button className="close-btn" onClick={retakePhoto}>Retake</button>
             </>
           )}
         </div>
