@@ -71,7 +71,7 @@ function App({ user }) {
       }
 
       let formData = new FormData();
-      formData.append("user_id", user.id);
+      formData.append("user_id", user.user_id);
       formData.append("last_signin", new Date().toISOString()); // Example timestamp
       formData.append("profile_pic", blob, "profile.jpg");
 
