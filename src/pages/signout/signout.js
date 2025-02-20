@@ -7,12 +7,13 @@ const SignOutContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchTodayLogins();
+    const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+    fetchTodayLogins(today);
   }, []);
 
-  const fetchTodayLogins = async () => {
+  const fetchTodayLogins = async (date) => {
     try {
-      const response = await axios.get("http://localhost:5000/today_logins");
+      const response = await axios.get(`https://snap-capture-backend.vercel.app/today_logins?date=${date}`);
       if (response.data.success) {
         setUsers(response.data.users);
       }
@@ -37,7 +38,7 @@ const SignOutContainer = () => {
                 alt="Profile"
                 className="profilePic"
               />
-              <span>{user.user_id}</span>
+              <span>{user.first_name} {user.last_name}  </span>
               <span className="timestamp">{user.last_signin}</span>
             </li>
           ))}
