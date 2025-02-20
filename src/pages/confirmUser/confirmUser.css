@@ -48,7 +48,7 @@
   align-items: center;
   justify-content: center;
   width: 400px;
-  height: 150px;
+  height: 200px;
   background: rgb(226, 226, 226);
   border-radius: 15px;
   font-size: 15px;
@@ -70,8 +70,8 @@
 }
 .confirm-button2{
   position: absolute; 
-  bottom: 20px;
-margin-left: 1200px;
+  bottom: 50px;
+margin-left: 120px;
 border-radius: 5px;
   appearance: none; 
   border: none;
@@ -114,4 +114,5 @@ border-radius: 5px;
 
 .user-details {
   margin-top: 10px;
+  
 }

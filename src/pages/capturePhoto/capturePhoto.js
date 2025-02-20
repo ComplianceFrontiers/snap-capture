@@ -85,7 +85,7 @@ function App({ user }) {
         if (response.status === 200) {
           setShowThankYou(true); // ✅ Show ThankYouMsg after success
          
-          alert("Profile picture uploaded successfully!");
+          // alert("Profile picture uploaded successfully!");
         } else {
           alert(result.error || "Failed to upload profile picture.");
         }

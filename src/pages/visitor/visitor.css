@@ -132,3 +132,24 @@
 .suggestion-box:hover {
   background-color: #ddd;
 }
+.signin-button2 {
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  background: rgb(65, 65, 65);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: rgb(85, 85, 85); 
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background: rgb(50, 50, 50); 
+    transform: scale(0.98); 
+  }
+}

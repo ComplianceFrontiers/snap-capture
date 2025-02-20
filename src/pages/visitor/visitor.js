@@ -100,9 +100,13 @@ const Visitor = ({ onBack }) => {
             ))}
           </div>
         ) : showSignInMessage ? (
-          <p className="signin-message" onClick={handleSignInClick} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>
-            Please sign in
-          </p>
+          <button 
+  className="signin-button2" 
+  onClick={handleSignInClick} 
+>
+  Please Sign In
+</button>
+
         ) : null}
       </div>
 
