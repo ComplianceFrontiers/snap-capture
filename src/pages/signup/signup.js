@@ -1,42 +1,65 @@
 import React, { useState } from "react";
 import "./signup.css";
 import Visitor from "../visitor/visitor.js";
+import axios from "axios";
 
 const Signup = ({ onBack }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    first_name: "",
+    last_name: "",
     phone: "",
-    email: ""
+    email: "",
+    last_signin: new Date().toISOString(), // Current timestamp
   });
+
+  const [message, setMessage] = useState(""); // For success/error messages
   const [showVisitor, setShowVisitor] = useState(false);
+
   if (showVisitor) {
     return <Visitor />;
   }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Registered Data:", formData);
+    setMessage(""); // Clear previous messages
+
+    try {
+      const response = await axios.post("https://snap-capture-backend.vercel.app/signup", formData);
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage(error.response?.data?.message || "Signup failed. Try again.");
+    }
   };
 
   return (
     <div className="container6">
-    <div className="back-button" onClick={() => setShowVisitor(true)}>
+      <div className="back-button" onClick={() => setShowVisitor(true)}>
         <span className="back-icon">←</span> Back
       </div>
       <h2 className="form-heading">Sign Up</h2>
+      {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit} className="signup-form">
         <input
           type="text"
-          name="name"
-          placeholder="Enter Name"
-          value={formData.name}
+          name="first_name"
+          placeholder="Enter First Name"
+          value={formData.first_name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="last_name"
+          placeholder="Enter Last Name"
+          value={formData.last_name}
           onChange={handleChange}
           required
         />
