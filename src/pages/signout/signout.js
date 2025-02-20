@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./signout.css";
-
+import Signin from "../signin/signin";
 const SignOutContainer = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [showVisitor, setShowVisitor] = useState(false);
+ 
   useEffect(() => {
     const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
     fetchTodayLogins(today);
@@ -23,7 +24,9 @@ const SignOutContainer = () => {
       setLoading(false);
     }
   };
-
+  if (showVisitor) {
+    return <Signin />;
+  }
   const handleSignOut = async (user_id) => {
 
     try {
@@ -43,6 +46,9 @@ const SignOutContainer = () => {
 
   return (
     <div className="signOutContainer">
+        <div className="back-button" onClick={() => setShowVisitor(true)}>
+        <span className="back-icon">←</span> Back
+      </div>
       <h2>Today's Logged In Users</h2>
       {loading ? (
         <p>Loading...</p>
