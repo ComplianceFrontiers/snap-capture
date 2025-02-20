@@ -4,31 +4,7 @@
   box-sizing:border-box;
   font-family:'Fira Sans',sans-serif;
 }
-.App{
-    min-height:100vh;
-    position:relative;
-    background-color:#323232;
-}
-.camera{ 
-    position:relative; 
-}
-.result{
-    height:100%;
-    width:100%;
-    display:flex;
-    position:fixed;
-    background-color:rgba(0,0,0,0.9);
-    alogn-items:center;
-    transition: 0.4s;
-}
-.result.hasPhoto{
-    left: 0;
-}
-video{
-    height:auto;
-    width:100%;
-    max-width:100%;
-}
+
 button{
     position:absolute; 
     bottom :20px;

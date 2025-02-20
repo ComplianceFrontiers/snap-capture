@@ -6,72 +6,108 @@ function App() {
   const photoRef = useRef(null);
   const [hasPhoto, setHasPhoto] = useState(false);
 
-  const getVideo = () => {
+  useEffect(() => {
+    console.log("Initializing video stream...");
     navigator.mediaDevices
-      .getUserMedia({
-        video: { width: 1920, height: 1080 },
-      })
+      .getUserMedia({ video: { width: 600, height: 600 } })
       .then((stream) => {
+        console.log("Video stream started");
         let video = videoRef.current;
         if (video) {
           video.srcObject = stream;
-          video.onloadedmetadata = () => {
-            video.play().catch((error) => console.error("Video play failed:", error));
-          };
+          video.play().catch((error) => console.error("Video play failed:", error));
+        } else {
+          console.warn("videoRef.current is null!");
         }
       })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+      .catch((err) => console.error("Error accessing camera:", err));
+  }, []);
 
   const takePhoto = () => {
-    const width = 414;
-    const height = width / (16 / 9);
+    console.log("Capture button clicked!");
+
     let video = videoRef.current;
     let photo = photoRef.current;
 
-    if (!video || !photo) return;
+    console.log("Video element:", video);
+    console.log("Canvas element:", photo);
 
-    photo.width = width;
-    photo.height = height;
+    if (!video || !photo) {
+      console.warn("Video or Photo canvas not found!");
+      return;
+    }
+
     let ctx = photo.getContext("2d");
-    ctx.drawImage(video, 0, 0, width, height);
+    if (!ctx) {
+      console.error("Canvas 2D context is null!");
+      return;
+    }
 
-    // Hide video and show captured photo
-    video.style.display = "none";
+    console.log("Canvas context initialized!");
+
+    photo.width = 300;
+    photo.height = 300;
+
+    ctx.drawImage(video, 0, 0, 300, 300);
+    console.log("Photo captured successfully!");
+
     setHasPhoto(true);
   };
 
   const retakePhoto = () => {
+    console.log("Retake button clicked!");
+  
     let photo = photoRef.current;
     let video = videoRef.current;
-    if (!photo || !video) return;
-
+  
+    if (!photo || !video) {
+      console.warn("Photo canvas or video not found!");
+      return;
+    }
+  
     let ctx = photo.getContext("2d");
     ctx.clearRect(0, 0, photo.width, photo.height);
-
-    // Show video again for retake
-    video.style.display = "block";
+    console.log("Photo cleared. Ready to retake.");
+  
+    // Show video again
+    video.style.display = "block";  // Ensure video is visible
+    video.play().catch((error) => console.error("Video play failed:", error));
+  
+    // Hide captured photo
     setHasPhoto(false);
   };
-
-  useEffect(() => {
-    getVideo();
-  }, []);
+  
+  
 
   return (
-    <div className="App">
-      <div className="Camera">
-        <video ref={videoRef} />
-        {!hasPhoto && <button onClick={takePhoto}>SNAP!</button>}
-      </div>
-      <div className={"result " + (hasPhoto ? "hasPhoto" : "")}>
-        <canvas ref={photoRef}></canvas>
-        {hasPhoto && <button onClick={retakePhoto}>Retake</button>}
+    <div className="app">
+      <div className="camera-container">
+        {/* Always Keep Video in the DOM */}
+        <div className="camera-frame" style={{ display: hasPhoto ? "none" : "block" }}>
+          <video ref={videoRef} className="video" autoPlay />
+        </div>
+  
+        {/* Canvas for Captured Photo */}
+        <canvas ref={photoRef} className="captured-photo" style={{ display: hasPhoto ? "block" : "none" }} />
+  
+        {/* Capture & Retake Buttons */}
+        <div className="buttons">
+          {!hasPhoto ? (
+            <button className="capture-btn" onClick={takePhoto}>
+              Capture
+            </button>
+          ) : (
+            <>
+              <button className="confirm-btn">Confirm</button>
+              <button className="close-btn" onClick={retakePhoto}>
+                Retake
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
-}
+}  
 
 export default App;

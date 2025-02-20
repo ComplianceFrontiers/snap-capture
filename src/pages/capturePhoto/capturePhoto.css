@@ -9,8 +9,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #323232;
+  justify-content: center; 
 }
 
 .camera-container {
@@ -20,6 +19,7 @@
   align-items: center;
 }
 
+/* Circular video feed */
 .camera-frame {
   width: 300px;
   height: 300px;
@@ -35,6 +35,20 @@
   object-fit: cover;
 }
 
+/* Circular captured image */
+.captured-photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 6px solid #4fff84;
+  box-shadow: 0 0 20px rgba(79, 255, 132, 0.6);
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+/* Capture button */
 .capture-btn {
   margin-top: 15px;
   padding: 12px 20px;
@@ -53,22 +67,7 @@
   background: linear-gradient(45deg, #ff4f84, #844fff);
 }
 
-.result {
-  text-align: center;
-}
-
-.captured-photo {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  border: 6px solid #4fff84;
-  box-shadow: 0 0 20px rgba(79, 255, 132, 0.6);
-}
-
-.buttons {
-  margin-top: 15px;
-}
-
+/* Retake & Confirm buttons */
 .confirm-btn,
 .close-btn {
   margin: 5px;
