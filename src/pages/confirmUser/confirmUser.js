@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../confirmUser/confirmUser.css"; // Reuse same CSS for styling
+import "../confirmUser/confirmUser.css"; // Reuse the same CSS for styling
 import Visitor from "../visitor/visitor";
 import PolicyAcknowledgement from "../PolicyAcknowledgement/PolicyAcknowledgement";
 
@@ -21,10 +21,7 @@ const ConfirmUser = ({ users }) => {
   }
 
   if (showPolicy) {
-    if (showPolicy) {
-      return <PolicyAcknowledgement user={selectedUser} />;
-    }
-    
+    return <PolicyAcknowledgement user={selectedUser} />;
   }
 
   return (
@@ -37,25 +34,35 @@ const ConfirmUser = ({ users }) => {
         {users.map((user) => (
           <div
             key={user.user_id}
-            className={`selection-box ${
-              selectedUser?.user_id === user.user_id ? "selected" : ""
-            }`}
+            className={`selection-box ${selectedUser?.user_id === user.user_id ? "selected" : ""}`}
             onClick={() => setSelectedUser(user)}
           >
             <div className="user-content">
-              <p className="user-name">
-                {user.first_name} {user.last_name}
-              </p>
-              <p className="user-email">Email: {user.email}</p>
-              <p className="user-phone">Phone: {user.phone}</p>
-              <p className="user-signin">
-                Last Sign-in: {new Date(user.last_signin).toLocaleString()}
-              </p>
+              {/* Profile Picture */}
+              <div className="profile-container">
+                <img 
+                  src={`data:image/jpeg;base64,${user.profile_pic}`} 
+                  alt="Profile" 
+                  className="profile-pic"
+                />
+              </div>
+              
+              {/* User Details */}
+              <div className="user-details">
+                <p className="user-name">
+                  {user.first_name} {user.last_name}
+                </p>
+                <p className="user-email">Email: {user.email}</p>
+                <p className="user-phone">Phone: {user.phone}</p>
+                <p className="user-signin">
+                  Last Sign-in: {new Date(user.last_signin).toLocaleString()}
+                </p>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      
+
       {/* Align Confirm Button to the Right */}
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
         <button
@@ -68,7 +75,6 @@ const ConfirmUser = ({ users }) => {
       </div>
     </div>
   );
-  
 };
 
 export default ConfirmUser;
