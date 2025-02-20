@@ -4,7 +4,7 @@ import { FaCheck, FaArrowLeft } from "react-icons/fa";
 import CapturePhoto from "../capturePhoto/capturePhoto";
 import Visitor from "../visitor/visitor";
 
-const PolicyAcknowledgement = () => {
+const PolicyAcknowledgement = ({ user }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [showNextComponent, setShowNextComponent] = useState(false);
   const [goBack, setGoBack] = useState(false);
@@ -23,7 +23,7 @@ const PolicyAcknowledgement = () => {
 
   // If the next component is triggered, render it instead
   if (showNextComponent) {
-    return <CapturePhoto />;
+    return <CapturePhoto user={user} />;
   }
 
   return (

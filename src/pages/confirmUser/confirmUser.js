@@ -21,7 +21,10 @@ const ConfirmUser = ({ users }) => {
   }
 
   if (showPolicy) {
-    return <PolicyAcknowledgement />;
+    if (showPolicy) {
+      return <PolicyAcknowledgement user={selectedUser} />;
+    }
+    
   }
 
   return (
