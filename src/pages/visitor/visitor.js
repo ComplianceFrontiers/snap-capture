@@ -11,12 +11,14 @@ const Visitor = ({ onBack }) => {
   const [users, setUsers] = useState([]); // Store matching users
   const [suggestions, setSuggestions] = useState([]); // Store phone suggestions
   const [loading, setLoading] = useState(false);
+  const [showSignInMessage, setShowSignInMessage] = useState(false);
 
   useEffect(() => {
     if (phone.length >= 3) {
       fetchSuggestions(phone);
     } else {
       setSuggestions([]); // Clear suggestions when input is short
+      setShowSignInMessage(false);
     }
   }, [phone]);
 
@@ -29,11 +31,18 @@ const Visitor = ({ onBack }) => {
 
       if (response.data.success) {
         setSuggestions(response.data.users);
+        setShowSignInMessage(false);
       } else {
         setSuggestions([]);
+        setShowSignInMessage(true);
       }
     } catch (error) {
-      console.error("Error fetching suggestions:", error);
+      if (error.response && error.response.status === 404) {
+        setSuggestions([]);
+        setShowSignInMessage(true); // Show "Please sign in" message
+      } else {
+        console.error("Error fetching suggestions:", error);
+      }
     } finally {
       setLoading(false);
     }
@@ -42,33 +51,7 @@ const Visitor = ({ onBack }) => {
   const handleSelectSuggestion = (selectedUser) => {
     setUsers([selectedUser]); // Store the selected user in state
   };
-  
-
-  const handleContinue = async () => {
-    if (!phone) {
-      setError("Phone number is required.");
-      return;
-    }
-
-    setError("");
-    setMessage("");
-
-    try {
-      const response = await axios.post("https://snap-capture-backend.vercel.app/signin", {
-        phone: phone,
-      });
-
-      if (response.data.success) {
-        setMessage("Sign-in successful!");
-        setUsers(response.data.users); // Store users in state
-      } else {
-        setError(response.data.error || "Something went wrong.");
-      }
-    } catch (error) {
-      setError("Failed to sign in. Please try again.");
-      console.error("API Error:", error);
-    }
-  };
+ 
 
   // If users are found, show ConfirmUser component
   if (users.length > 0) {
@@ -94,33 +77,26 @@ const Visitor = ({ onBack }) => {
           onChange={(e) => setPhone(e.target.value)}
         />
         {loading && <p className="loading-text">Searching...</p>}
-        {suggestions.length > 0 && (
-  <div className="suggestions-container">
-    {suggestions.map((user) => (
-      <div 
-        key={user.user_id} 
-        className="suggestion-box" 
-        onClick={() => handleSelectSuggestion(user)}
-      >
-         {user.first_name} {user.last_name}
-      </div>
-    ))}
-  </div>
-)}
-
-
+        {suggestions.length > 0 ? (
+          <div className="suggestions-container">
+            {suggestions.map((user) => (
+              <div
+                key={user.user_id}
+                className="suggestion-box"
+                onClick={() => handleSelectSuggestion(user)}
+              >
+                {user.first_name} {user.last_name}
+              </div>
+            ))}
+          </div>
+        ) : showSignInMessage ? (
+          <p className="signin-message">Please sign in</p>
+        ) : null}
       </div>
 
       {/* Error / Success Message */}
       {error && <p className="error-message">{error}</p>}
       {message && <p className="success-message">{message}</p>}
-
-      {/* Continue Button */}
-      <div className="button-container">
-        <button className="continue-button" onClick={handleContinue}>
-          Continue
-        </button>
-      </div>
     </div>
   );
 };

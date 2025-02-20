@@ -1,12 +1,13 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import "./PolicyAcknowledgement.css";
-import { FaCheck, FaTimes } from "react-icons/fa";
-import { IoIosArrowBack } from "react-icons/io";
+import { FaCheck, FaArrowLeft } from "react-icons/fa";
 import CapturePhoto from "../capturePhoto/capturePhoto";
+import Visitor from "../visitor/visitor";
 
 const PolicyAcknowledgement = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [showNextComponent, setShowNextComponent] = useState(false);
+  const [goBack, setGoBack] = useState(false);
 
   // Function to show the next component
   const handleContinue = () => {
@@ -14,6 +15,11 @@ const PolicyAcknowledgement = () => {
       setShowNextComponent(true);
     }
   };
+
+  // If user clicks back, show ConfirmUser component
+  if (goBack) {
+    return <Visitor />;
+  }
 
   // If the next component is triggered, render it instead
   if (showNextComponent) {
@@ -23,10 +29,10 @@ const PolicyAcknowledgement = () => {
   return (
     <div className="policy-container">
       {/* Back Button */}
-      <div className="back-button">
-        <IoIosArrowBack size={24} />
+      <div className="back-button" onClick={() => setGoBack(true)} style={{ cursor: "pointer" }}>
+        <FaArrowLeft className="back-icon" /> Back
       </div>
-
+      
       {/* Policy Content */}
       <div className="policy-content">
         <h2>Policy Acknowledgement</h2>
@@ -62,7 +68,6 @@ const PolicyAcknowledgement = () => {
           >
             <FaCheck /> Continue
           </button>
-          
         </div>
       </div>
     </div>

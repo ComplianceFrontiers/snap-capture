@@ -24,7 +24,9 @@ const UserSelection = () => {
         <FaArrowLeft className="back-icon" /> Back
       </div>
 
-      <div className="grid-container">
+      <div className="grid-container" style={{
+    display: "grid"
+  }}>
         <div className="selection-box1">Registered Adult</div>
         <div className="selection-box1">BOTS V5 Student</div>
         <div className="selection-box1" onClick={() => setActiveComponent("visitor")}>

@@ -30,9 +30,7 @@ const ConfirmUser = ({ users }) => {
         <span className="back-icon">←</span> Back
       </div>
       <h2>Confirm Profile</h2>
-      <div
-  className={`grid-container ${users.length === 1 ? "single-user" : ""}`}
->
+      <div className={`grid-container ${users.length === 1 ? "single-user" : ""}`}>
         {users.map((user) => (
           <div
             key={user.user_id}
@@ -54,11 +52,20 @@ const ConfirmUser = ({ users }) => {
           </div>
         ))}
       </div>
-      <button className="confirm-button2" onClick={handleConfirm}>
-        Confirm Login
-      </button>
+      
+      {/* Align Confirm Button to the Right */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+        <button
+          className="confirm-button2"
+          onClick={handleConfirm}
+          style={{ marginTop: "20px" }}
+        >
+          Confirm Login
+        </button>
+      </div>
     </div>
   );
+  
 };
 
 export default ConfirmUser;
