@@ -10,6 +10,7 @@
   h2 {
     font-size: 20px;
     color: #333;
+    margin-bottom: 15px;
   }
 
   .userList {
@@ -23,6 +24,7 @@
       justify-content: space-between;
       padding: 10px;
       border-bottom: 1px solid #ddd;
+      position: relative;
 
       .profilePic {
         width: 40px;
@@ -31,9 +33,40 @@
         object-fit: cover;
       }
 
-      .timestamp {
+      .userInfo {
+        flex-grow: 1;
+        text-align: left;
+        margin-left: 10px;
+
+        span {
+          display: block;
+        }
+
+        .userName {
+          font-size: 14px;
+          font-weight: bold;
+          color: #222;
+        }
+
+        .timestamp {
+          font-size: 12px;
+          color: #666;
+        }
+      }
+
+      .signOutBtn {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 6px 10px;
         font-size: 12px;
-        color: #666;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background-color: #d43f3f;
+        }
       }
     }
   }

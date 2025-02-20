@@ -24,6 +24,23 @@ const SignOutContainer = () => {
     }
   };
 
+  const handleSignOut = async (user_id) => {
+
+    try {
+      const response = await axios.post("https://snap-capture-backend.vercel.app/update_signin", {
+        user_id: user_id,
+        signin: false,
+      });
+
+      if (response.data.success) {
+        setUsers(users.filter((user) => user.user_id !== user_id)); // Remove user from list
+      }
+    } catch (error) {
+      console.error("Error signing out user:", error);
+      alert("Failed to sign out user.");
+    }
+  };
+
   return (
     <div className="signOutContainer">
       <h2>Today's Logged In Users</h2>
@@ -38,8 +55,9 @@ const SignOutContainer = () => {
                 alt="Profile"
                 className="profilePic"
               />
-              <span>{user.first_name} {user.last_name}  </span>
-              <span className="timestamp">{user.last_signin}</span>
+              <span>{user.first_name} {user.last_name}</span>
+              <span className="timestamp">Today</span>
+              <button className="signOutBtn" onClick={() => handleSignOut(user.user_id)}>Sign Out</button>
             </li>
           ))}
         </ul>
