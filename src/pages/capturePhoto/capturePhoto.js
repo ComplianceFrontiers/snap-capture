@@ -73,6 +73,7 @@ function App({ user }) {
       let formData = new FormData();
       formData.append("user_id", user.user_id);
       formData.append("last_signin", new Date().toISOString()); // Example timestamp
+      formData.append("sign In", true);
       formData.append("profile_pic", blob, "profile.jpg");
 
       try {
