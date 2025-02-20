@@ -54,7 +54,7 @@ const ConfirmUser = ({ users }) => {
       </div>
       
       {/* Align Confirm Button to the Right */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+      <div style={{ width: "100%"}}>
         <button
           className="confirm-button2"
           onClick={handleConfirm}

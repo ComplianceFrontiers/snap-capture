@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Signin from './pages/signin/signin';
+// import Signup from './pages/signiup/signup';
 // import Capturephoto from "./pages/capturePhoto/capturePhoto";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

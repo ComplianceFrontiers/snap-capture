@@ -68,31 +68,25 @@
   border: 3px solid #007bff;
   background: #e0f0ff;
 }
-button{
-  position:absolute; 
-  bottom :20px;
-  left:20px;
-  apperiance:none;
-  border:none;
-  outline:none;
-  padding:8px 16px;
-  background-image: linear-gradient(to
-
-  right, #844FFF 50%, #FF4F84 50%);
-
+.confirm-button2{
+  position: absolute; 
+  bottom: 20px;
+margin-left: 1200px;
+border-radius: 5px;
+  appearance: none; 
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  background-image: linear-gradient(to right, #844FFF 50%, #FF4F84 50%);
   background-position: 0%;
-
   background-size: 200%;
-
   color: #FFF;
-
-  font-size: 24px;
-
+  font-size: 20px;
   font-weight: 700;
-
   transition: 0.4s;
   cursor: pointer;
 }
-button:hover{
+
+.confirm-button2:hover {
   background-position: 100%;
 }

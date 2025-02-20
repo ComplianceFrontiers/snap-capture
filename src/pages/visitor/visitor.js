@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import ConfirmUser from "../confirmUser/confirmUser";
+import Signup from "../signup/signup.js";
 import "./visitor.css";
 
 const Visitor = ({ onBack }) => {
@@ -12,6 +13,7 @@ const Visitor = ({ onBack }) => {
   const [suggestions, setSuggestions] = useState([]); // Store phone suggestions
   const [loading, setLoading] = useState(false);
   const [showSignInMessage, setShowSignInMessage] = useState(false);
+  const [showSignInComponent, setShowSignInComponent] = useState(false); // State to control SignInComponent visibility
 
   useEffect(() => {
     if (phone.length >= 3) {
@@ -51,11 +53,19 @@ const Visitor = ({ onBack }) => {
   const handleSelectSuggestion = (selectedUser) => {
     setUsers([selectedUser]); // Store the selected user in state
   };
- 
+
+  const handleSignInClick = () => {
+    setShowSignInComponent(true); // Show the SignInComponent when "Please sign in" is clicked
+  };
 
   // If users are found, show ConfirmUser component
   if (users.length > 0) {
     return <ConfirmUser users={users} />;
+  }
+
+  // If user clicks "Please sign in," show SignInComponent
+  if (showSignInComponent) {
+    return <Signup />;
   }
 
   return (
@@ -90,7 +100,9 @@ const Visitor = ({ onBack }) => {
             ))}
           </div>
         ) : showSignInMessage ? (
-          <p className="signin-message">Please sign in</p>
+          <p className="signin-message" onClick={handleSignInClick} style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}>
+            Please sign in
+          </p>
         ) : null}
       </div>
 
