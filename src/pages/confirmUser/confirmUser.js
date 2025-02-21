@@ -49,15 +49,12 @@ const ConfirmUser = ({ users }) => {
               
               {/* User Details */}
               <div className="user-details">
-                <p className="user-name">
-                  {user.player_first} {user.player_last}
-                </p>
-                <p className="user-email">Email: {user.email}</p>
-                <p className="user-phone">Phone: {user.phone}</p>
-                <p className="user-signin">
-                  Last Sign-in: {new Date(user.last_signin).toLocaleString()}
-                </p>
+                <p><span>Name:</span> {user.player_first} {user.player_last}</p>
+                <p><span>Email:</span> {user.email}</p>
+                <p><span>Phone:</span> {user.phone}</p>
+                <p><span>Last Sign-in:</span> {new Date(user.last_signin).toLocaleString()}</p>
               </div>
+
             </div>
           </div>
         ))}
