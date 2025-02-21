@@ -153,4 +153,32 @@
     transform: scale(0.98); 
   }
 }
- 
+.signin-message {
+  text-align: center;
+  font-size: 16px;
+  color: #333; 
+  padding: 12px;
+  border-radius: 8px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;  
+  width: fit-content;
+  margin: 20px auto;  
+
+  .register-button {
+    background-color:rgb(71, 93, 235);  
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color:rgb(41, 6, 238);  
+    }
+  }
+}
