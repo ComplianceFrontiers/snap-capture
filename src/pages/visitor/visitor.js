@@ -100,12 +100,11 @@ const Visitor = ({ onBack }) => {
             ))}
           </div>
         ) : showSignInMessage ? (
-          <button 
-  className="signin-button2" 
-  onClick={handleSignInClick} 
->
-  Please Sign In
-</button>
+          <div className="signin-message">
+          <span>Could not locate your phone number. Please </span>
+          <button className="register-button" onClick={handleSignInClick}>Register</button>
+        </div>
+        
 
         ) : null}
       </div>

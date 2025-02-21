@@ -27,12 +27,12 @@ const UserSelection = () => {
       <div className="grid-container" style={{
     display: "grid"
   }}>
-        <div className="selection-box1">Registered Adult</div>
-        <div className="selection-box1">BOTS V5 Student</div>
-        <div className="selection-box1" onClick={() => setActiveComponent("visitor")}>
-          Visitor
+        <div className="selection-box1" onClick={() => setActiveComponent("visitor")}>Chess Club</div>
+        <div className="selection-box1">Chess Tournament</div>
+        <div className="selection-box1">
+         Chess Coaching
         </div>
-        <div className="selection-box1">BOTS IQ Student</div>
+        <div className="selection-box1">Chess Champs</div>
       </div>
     </div>
   );
