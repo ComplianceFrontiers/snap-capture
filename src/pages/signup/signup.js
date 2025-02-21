@@ -30,14 +30,18 @@ const Signup = ({ onBack }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(""); // Clear previous messages
-
+  
     try {
       const response = await axios.post("https://snap-capture-backend.vercel.app/signup", formData);
       setMessage(response.data.message);
+  
+      // Redirect to Stripe payment page after successful signup
+      window.location.href = "https://buy.stripe.com/00gg2DboddF50DudQQ";
     } catch (error) {
       setMessage(error.response?.data?.message || "Signup failed. Try again.");
     }
   };
+  
 
   return (
     <div className="container6">
