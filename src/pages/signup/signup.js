@@ -7,8 +7,6 @@ const Signup = ({ onBack }) => {
   const [formData, setFormData] = useState({
     player_first: "",
     player_last: "",
-    parent_first: "",
-    parent_last: "",
     phone: "",
     email: "",
     last_signin: new Date().toISOString(), // Current timestamp

@@ -113,6 +113,34 @@ border-radius: 5px;
 }
 
 .user-details {
-  margin-top: 10px;
-  
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px;
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.user-details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.user-details p:last-child {
+  border-bottom: none;
+}
+
+.user-details span {
+  font-weight: 600;
+  color: #555;
 }
