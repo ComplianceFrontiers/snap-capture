@@ -5,8 +5,10 @@ import axios from "axios";
 
 const Signup = ({ onBack }) => {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    player_first: "",
+    player_last: "",
+    parent_first: "",
+    parent_last: "",
     phone: "",
     email: "",
     last_signin: new Date().toISOString(), // Current timestamp
@@ -46,23 +48,46 @@ const Signup = ({ onBack }) => {
       </div>
       <h2 className="form-heading">Sign Up</h2>
       {message && <p className="message">{message}</p>}
+      
       <form onSubmit={handleSubmit} className="signup-form">
+        {/* Player Name */}
+        <h3>Player Name *</h3>
         <input
           type="text"
-          name="first_name"
-          placeholder="Enter First Name"
-          value={formData.first_name}
+          name="player_first"
+          placeholder="First Name"
+          value={formData.player_first}
           onChange={handleChange}
           required
         />
         <input
           type="text"
-          name="last_name"
-          placeholder="Enter Last Name"
-          value={formData.last_name}
+          name="player_last"
+          placeholder="Last Name"
+          value={formData.player_last}
           onChange={handleChange}
           required
         />
+
+        {/* Parent Name (Optional) */}
+        <h3>Parent Name (for minors)</h3>
+        <input
+          type="text"
+          name="parent_first"
+          placeholder="First Name"
+          value={formData.parent_first}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="parent_last"
+          placeholder="Last Name"
+          value={formData.parent_last}
+          onChange={handleChange}
+        />
+
+        {/* Contact Info */}
+        <h3>Contact Information *</h3>
         <input
           type="tel"
           name="phone"
@@ -79,6 +104,7 @@ const Signup = ({ onBack }) => {
           onChange={handleChange}
           required
         />
+
         <button type="submit" className="button1">Sign Up</button>
       </form>
     </div>
