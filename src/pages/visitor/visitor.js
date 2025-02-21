@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import ConfirmUser from "../confirmUser/confirmUser";
 import Signup from "../signup/signup.js";
 import "./visitor.css";
+import {  FaArrowLeft } from "react-icons/fa";
+import UserSelection from "../UserSelection/UserSelection.js";
 
-const Visitor = ({ onBack }) => {
+const Visitor = () => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -14,7 +15,7 @@ const Visitor = ({ onBack }) => {
   const [loading, setLoading] = useState(false);
   const [showSignInMessage, setShowSignInMessage] = useState(false);
   const [showSignInComponent, setShowSignInComponent] = useState(false); // State to control SignInComponent visibility
-
+ const [goBack, setGoBack] = useState(false);
   useEffect(() => {
     if (phone.length >= 3) {
       fetchSuggestions(phone);
@@ -49,7 +50,9 @@ const Visitor = ({ onBack }) => {
       setLoading(false);
     }
   };
-
+if (goBack) {
+    return <UserSelection />;
+  }
   const handleSelectSuggestion = (selectedUser) => {
     setUsers([selectedUser]); // Store the selected user in state
   };
@@ -70,11 +73,9 @@ const Visitor = ({ onBack }) => {
 
   return (
     <div className="visitor-container">
-      {/* Back Button */}
-      <div className="back-button" onClick={onBack}>
-        <FaArrowLeft className="back-icon" /> Back
-      </div>
-
+         <div className="back-button" onClick={() => setGoBack(true)} style={{ cursor: "pointer" }}>
+                 <FaArrowLeft className="back-icon" /> Back
+               </div>
       {/* Phone Number Field */}
       <div className="phone-input-container">
         <label htmlFor="phone">Contact Details</label>
@@ -101,11 +102,11 @@ const Visitor = ({ onBack }) => {
           </div>
         ) : showSignInMessage ? (
           <div className="signin-message">
-          <span>Could not locate your phone number. Please </span>
-          <button className="register-button" onClick={handleSignInClick}>Register</button>
-        </div>
-        
-
+            <span>Could not locate your phone number. Please </span>
+            <button className="register-button" onClick={handleSignInClick}>
+              Register
+            </button>
+          </div>
         ) : null}
       </div>
 

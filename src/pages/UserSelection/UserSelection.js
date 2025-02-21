@@ -7,14 +7,13 @@ import "./UserSelection.css";
 const UserSelection = () => {
   const [activeComponent, setActiveComponent] = useState(null);
 
-  const handleBack = () => setActiveComponent(null);
 
   if (activeComponent === "signin") {
     return <Signin />;
   }
 
   if (activeComponent === "visitor") {
-    return <Visitor onBack={handleBack} />;
+    return <Visitor />;
   }
 
   return (
