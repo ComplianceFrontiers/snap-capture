@@ -95,7 +95,7 @@ const Visitor = ({ onBack }) => {
                 className="suggestion-box"
                 onClick={() => handleSelectSuggestion(user)}
               >
-                {user.first_name} {user.last_name}
+                {user.player_first} {user.player_last}
               </div>
             ))}
           </div>

@@ -72,7 +72,7 @@ const SignOutContainer = () => {
                 alt="Profile"
                 className="profilePic"
               />
-              <span>{user.first_name} {user.last_name}</span>
+              <span>{user.player_first} {user.player_last}</span>
               <span className="timestamp">Today</span>
               <button className="signOutBtn" onClick={() => handleSignOut(user.user_id)}>Sign Out</button>
             </li>

@@ -5,8 +5,8 @@ import axios from "axios";
 
 const Signup = ({ onBack }) => {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    player_first: "",
+    player_last: "",
     phone: "",
     email: "",
     last_signin: new Date().toISOString(), // Current timestamp
@@ -49,17 +49,17 @@ const Signup = ({ onBack }) => {
       <form onSubmit={handleSubmit} className="signup-form">
         <input
           type="text"
-          name="first_name"
+          name="player_first"
           placeholder="Enter First Name"
-          value={formData.first_name}
+          value={formData.player_first}
           onChange={handleChange}
           required
         />
         <input
           type="text"
-          name="last_name"
+          name="player_last"
           placeholder="Enter Last Name"
-          value={formData.last_name}
+          value={formData.player_last}
           onChange={handleChange}
           required
         />

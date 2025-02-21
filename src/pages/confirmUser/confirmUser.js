@@ -50,7 +50,7 @@ const ConfirmUser = ({ users }) => {
               {/* User Details */}
               <div className="user-details">
                 <p className="user-name">
-                  {user.first_name} {user.last_name}
+                  {user.player_first} {user.player_last}
                 </p>
                 <p className="user-email">Email: {user.email}</p>
                 <p className="user-phone">Phone: {user.phone}</p>
