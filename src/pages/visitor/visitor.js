@@ -77,7 +77,7 @@ const Visitor = ({ onBack }) => {
 
       {/* Phone Number Field */}
       <div className="phone-input-container">
-        <label htmlFor="phone">Phone Number:</label>
+        <label htmlFor="phone">Contact Details</label>
         <input
           type="text"
           id="phone"
