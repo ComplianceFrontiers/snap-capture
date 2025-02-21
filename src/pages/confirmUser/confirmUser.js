@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import "../confirmUser/confirmUser.css"; // Reuse the same CSS for styling
+import "../confirmUser/confirmUser.css"; 
 import Visitor from "../visitor/visitor";
 import PolicyAcknowledgement from "../PolicyAcknowledgement/PolicyAcknowledgement";
+
+const defaultProfilePic = "/default-profile.png"; // Replace with your actual default image path
 
 const ConfirmUser = ({ users }) => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -13,63 +15,47 @@ const ConfirmUser = ({ users }) => {
       alert("Please select a user to continue.");
       return;
     }
-    setShowPolicy(true); // Update state to show PolicyAcknowledgement
+    setShowPolicy(true);
   };
 
-  if (showVisitor) {
-    return <Visitor />;
-  }
-
-  if (showPolicy) {
-    return <PolicyAcknowledgement user={selectedUser} />;
-  }
-
+  if (showVisitor) return <Visitor />;
+  if (showPolicy) return <PolicyAcknowledgement user={selectedUser} />;
+console.log("u",users[0])
   return (
     <div className="selection-container">
       <div className="back-button" onClick={() => setShowVisitor(true)}>
         <span className="back-icon">←</span> Back
       </div>
       <h2>Confirm Profile</h2>
-      <div className={`grid-container ${users.length === 1 ? "single-user" : ""}`}>
-        {users.map((user) => (
-          <div
-            key={user.user_id}
-            className={`selection-box ${selectedUser?.user_id === user.user_id ? "selected" : ""}`}
-            onClick={() => setSelectedUser(user)}
-          >
-            <div className="user-content">
-              {/* Profile Picture */}
-              <div className="profile-container">
-                <img 
-                  src={`data:image/jpeg;base64,${user.profile_pic}`} 
-                  alt="Profile" 
-                  className="profile-pic"
-                />
-              </div>
-              
-              {/* User Details */}
-              <div className="user-details">
-                <p><span>Name:</span> {user.player_first} {user.player_last}</p>
-                <p><span>Email:</span> {user.email}</p>
-                <p><span>Phone:</span> {user.phone}</p>
-                <p><span>Last Sign-in:</span> {new Date(user.last_signin).toLocaleString()}</p>
-              </div>
-
-            </div>
+      
+      <div
+        className={`selection-box ${selectedUser ? "selected" : ""}`}
+        onClick={() => setSelectedUser(users[0])}
+      >
+        <div className="user-content">
+          {/* Profile Picture (Handles Empty Profile) */}
+          <div className="profile-container">
+            <img 
+              src={users[0]?.profile_pic ? `data:image/jpeg;base64,${users[0]?.profile_pic}` : defaultProfilePic} 
+              alt="Profile" 
+              className="profile-pic"
+            />
           </div>
-        ))}
+
+          {/* User Details */}
+          <div className="user-details">
+            <p><span>Name:</span> {users[0]?.player_first} {users[0]?.player_last}</p>
+            <p><span>Email:</span> {users[0]?.email}</p>
+            <p><span>Phone:</span> {users[0]?.phone}</p>
+            <p><span>Last Sign-in:</span> {new Date(users[0]?.last_signin).toLocaleString()}</p>
+          </div>
+        </div>
       </div>
 
-      {/* Align Confirm Button to the Right */}
-      <div style={{ width: "100%"}}>
-        <button
-          className="confirm-button2"
-          onClick={handleConfirm}
-          style={{ marginTop: "20px" }}
-        >
-          Confirm Login
-        </button>
-      </div>
+      {/* Confirm Button */}
+      <button className="confirm-button2" onClick={handleConfirm}>
+        Confirm Login
+      </button>
     </div>
   );
 };
