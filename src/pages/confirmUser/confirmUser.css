@@ -92,7 +92,6 @@
   object-fit: cover;
   border: 2px solid #ccc;
 }
-
 .user-details {
   background: #ffffff;
   padding: 12px;
@@ -100,7 +99,7 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 320px;
-  text-align: center;
+  text-align: left;
   font-size: 14px;
   color: #333;
   border: 1px solid #ddd;
@@ -108,9 +107,13 @@
 }
 
 .user-details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 8px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
+  gap: 10px;
 }
 
 .user-details p:last-child {
@@ -120,7 +123,11 @@
 .user-details span {
   font-weight: 600;
   color: #555;
+  min-width: 120px;
+  display: inline-block;
+  text-align: left;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
