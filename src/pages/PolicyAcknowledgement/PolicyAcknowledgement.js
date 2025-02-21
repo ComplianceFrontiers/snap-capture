@@ -3,11 +3,12 @@ import "./PolicyAcknowledgement.css";
 import { FaCheck, FaArrowLeft } from "react-icons/fa";
 import CapturePhoto from "../capturePhoto/capturePhoto";
 import Visitor from "../visitor/visitor";
-
+import TermsAndConditions from "../TermsAndConditions/TermsAndConditions";
 const PolicyAcknowledgement = ({ user }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [showNextComponent, setShowNextComponent] = useState(false);
   const [goBack, setGoBack] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   // Function to show the next component
   const handleContinue = () => {
@@ -25,9 +26,13 @@ const PolicyAcknowledgement = ({ user }) => {
   if (showNextComponent) {
     return <CapturePhoto user={user} />;
   }
+  if (showTerms) {
+    return <TermsAndConditions user={user} />;
+  }
 
   return (
     <div className="policy-container">
+ 
       {/* Back Button */}
       <div className="back-button" onClick={() => setGoBack(true)} style={{ cursor: "pointer" }}>
         <FaArrowLeft className="back-icon" /> Back
@@ -37,21 +42,26 @@ const PolicyAcknowledgement = ({ user }) => {
       <div className="policy-content">
         <h2>Facility Usage Policies for Bellevue Community Center</h2>
         <p>
-          The BELLEVUE COMMUNITY CENTER (BCC) serves as a resource providing services to a broad community. One component of our service delivery is to offer meeting and activity space to groups or individuals. Nonprofit organizations, other groups, and individuals may request the use of the facility during or outside regular operating hours. Approval is contingent upon availability of space and a BCC employee to supervise during the requested time period. Groups or individuals using the facility will abide by the following policies:
-        </p>
+          The BELLEVUE COMMUNITY CENTER (BCC) serves as a resource providing services to a broad community. One component of our service delivery is to offer meeting and activity space to groups or individuals. Nonprofit organizations, other groups, and individuals may request the use of the facility during or outside regular operating hours. 
+         </p>
         
         
 
         {/* Checkbox Section */}
         <div className="checkbox-section">
-          <input
-            type="checkbox"
-            id="policy-checkbox"
-            checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
-          />
-          <label htmlFor="policy-checkbox">I have read and understood the above policies.</label>
-        </div>
+  <input
+    type="checkbox"
+    id="policy-checkbox"
+    checked={isChecked}
+    onChange={() => setIsChecked(!isChecked)}
+  />
+  <label htmlFor="policy-checkbox">
+    I have read and accept  
+    <span className="terms-link" onClick={() => setShowTerms(true)}>
+      Terms and Conditions
+    </span>
+  </label>
+</div>
 
         {/* Buttons */}
         <div className="button-container1">
