@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./signout.css";
 import Signin from "../signin/signin";
+import ThankYouMessage from "../ThankYouSignout/ThankYouSignout";
+
 const SignOutContainer = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showVisitor, setShowVisitor] = useState(false);
- 
+  const [showThankYou, setShowThankYou] = useState(false);
+
   useEffect(() => {
     const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
     fetchTodayLogins(today);
@@ -27,22 +30,30 @@ const SignOutContainer = () => {
   if (showVisitor) {
     return <Signin />;
   }
-  const handleSignOut = async (user_id) => {
 
+  const handleSignOut = async (user_id) => {
     try {
       const response = await axios.post("https://snap-capture-backend.vercel.app/update_signin", {
         user_id: user_id,
         signin: false,
       });
-
+  
       if (response.data.success) {
-        setUsers(users.filter((user) => user.user_id !== user_id)); // Remove user from list
+        setShowThankYou(true); // Show ThankYouMessage
+  
+        setTimeout(() => {
+          window.location.reload(); // Refresh the page after 1 second
+        }, 1000);
       }
     } catch (error) {
       console.error("Error signing out user:", error);
       alert("Failed to sign out user.");
     }
   };
+  if (showThankYou) {
+    return <ThankYouMessage />;
+  }
+  
 
   return (
     <div className="signOutContainer">

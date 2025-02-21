@@ -8,6 +8,8 @@ function App({ user }) {
   const [hasPhoto, setHasPhoto] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+
+  // ✅ Ensure useEffect is always called at the top level
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: { width: 600, height: 600 } })
@@ -20,6 +22,17 @@ function App({ user }) {
       })
       .catch((err) => console.error("Error accessing camera:", err));
   }, []);
+
+  // ✅ Added useEffect to reload the page after 1 second when showThankYou is true
+  useEffect(() => {
+    if (showThankYou) {
+      const timer = setTimeout(() => {
+        window.location.reload(); // Refresh the page after 1 second
+      }, 1000);
+  
+      return () => clearTimeout(timer); // Cleanup timer
+    }
+  }, [showThankYou]); // Runs only when showThankYou changes
 
   const takePhoto = () => {
     let video = videoRef.current;
@@ -36,10 +49,7 @@ function App({ user }) {
     ctx.drawImage(video, 0, 0, 300, 300);
     setHasPhoto(true);
   };
-  if (showThankYou) {
-    return <ThankYouMessage />; // ✅ Show ThankYouMsg instead of camera UI
-  }
-  
+
   const retakePhoto = () => {
     let photo = photoRef.current;
     let ctx = photo.getContext("2d");
@@ -84,8 +94,6 @@ function App({ user }) {
         let result = await response.json();
         if (response.status === 200) {
           setShowThankYou(true); // ✅ Show ThankYouMsg after success
-         
-          // alert("Profile picture uploaded successfully!");
         } else {
           alert(result.error || "Failed to upload profile picture.");
         }
@@ -97,6 +105,11 @@ function App({ user }) {
       setIsUploading(false);
     }, "image/jpeg");
   };
+
+  // ✅ Ensure the ThankYouMessage is displayed correctly
+  if (showThankYou) {
+    return <ThankYouMessage />;
+  }
 
   return (
     <div className="app">
