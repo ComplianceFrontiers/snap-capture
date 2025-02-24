@@ -53,7 +53,8 @@ const Signup = ({ onBack }) => {
       
       <form onSubmit={handleSubmit} className="signup-form">
         {/* Player Name */}
-        <h3>Player Name *</h3>
+        <h3>Player Name <span class="red-star">*</span></h3>
+
         <input
           type="text"
           name="player_first"
@@ -89,7 +90,7 @@ const Signup = ({ onBack }) => {
         />
 
         {/* Contact Info */}
-        <h3>Contact Information *</h3>
+        <h3>Contact Information <span class="red-star">*</span></h3>
         <input
           type="tel"
           name="phone"

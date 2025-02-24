@@ -81,7 +81,7 @@
 
 @media screen and (max-width: 768px) {
   .signup-form {
-    width: 90%;
+    width: 300%;
     padding: 20px;
   }
 
@@ -89,6 +89,9 @@
     flex-direction: column;
     gap: 5px;
   }
+}
+.red-star {
+  color: red;
 }
 
 @media screen and (max-width: 480px) {

@@ -102,7 +102,7 @@ if (goBack) {
           </div>
         ) : showSignInMessage ? (
           <div className="signin-message">
-            <span>Could not locate your phone number. Please </span>
+            <span>Could not locate your phone number </span>
             <button className="register-button" onClick={handleSignInClick}>
               Register
             </button>

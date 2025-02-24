@@ -7,7 +7,6 @@ import "./UserSelection.css";
 const UserSelection = () => {
   const [activeComponent, setActiveComponent] = useState(null);
 
-
   if (activeComponent === "signin") {
     return <Signin />;
   }
@@ -16,6 +15,10 @@ const UserSelection = () => {
     return <Visitor />;
   }
 
+  const handleChessChampsClick = () => {
+    window.location.href = "https://www.chesschamps.us/";
+  };
+
   return (
     <div className="selection-container">
       {/* Back Button */}
@@ -23,15 +26,21 @@ const UserSelection = () => {
         <FaArrowLeft className="back-icon" /> Back
       </div>
 
-      <div className="grid-container" style={{
-    display: "grid"
-  }}>
-        <div className="selection-box1" onClick={() => setActiveComponent("visitor")}>Chess Club</div>
-        <div className="selection-box1">Chess Tournament</div>
-        <div className="selection-box1">
-         Chess Coaching
+      <div className="grid-container">
+        <div className="selection-box1" onClick={() => setActiveComponent("visitor")}>
+          Chess Club
         </div>
-        <div className="selection-box1">Chess Champs</div>
+
+        {/* Blocked Chess Tournament */}
+        <div className="selection-box1 disabled">Chess Tournament</div>
+
+        {/* Blocked Chess Coaching */}
+        <div className="selection-box1 disabled">Chess Coaching</div>
+
+        {/* Redirect to Chess Champs website */}
+        <div className="selection-box1" onClick={handleChessChampsClick}>
+          Chess Champs
+        </div>
       </div>
     </div>
   );

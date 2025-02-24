@@ -47,8 +47,8 @@ console.log("u",users[0])
             <p><span>Name:</span> {users[0]?.player_first} {users[0]?.player_last}</p>
             <p><span>Email:</span> {users[0]?.email}</p>
             <p><span>Phone:</span> {users[0]?.phone}</p>
-            <p><span>Last Sign-in:</span> {new Date(users[0]?.last_signin).toLocaleString()}</p>
-          </div>
+            <p><span>Last Sign-in:</span> {new Date(users[0]?.last_signin).toLocaleDateString()}</p>
+            </div>
         </div>
       </div>
 

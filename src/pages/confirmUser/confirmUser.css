@@ -125,7 +125,7 @@
   padding: 8px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
-  gap: 10px;
+  gap: 5px;
   word-break: break-word; /* Ensures long words wrap */
 }
 
@@ -144,11 +144,11 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .selection-box {
-    max-width: 320px; /* Adjusted for smaller screens */
+    max-width: 500px; /* Adjusted for smaller screens */
   }
 
   .user-details {
-    max-width: 300px; /* Responsive max-width */
+    max-width: 500px; /* Responsive max-width */
   }
 
   .confirm-button2 {
