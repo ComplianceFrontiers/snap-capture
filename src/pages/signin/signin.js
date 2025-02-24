@@ -4,11 +4,16 @@ import UserSelection from "../UserSelection/UserSelection";
 import SignOutContainer from "../signout/signout";
 import image1 from "../../images/7.png"; // Sign In
 import image2 from "../../images/8.png"; // Sign Out
-import video from "../../video/welcomevideo.mp4";
+import welcomeVideo from "../../video/welcomevideo.mp4";
 
 const Signin = () => {
+  const [showSignOptions, setShowSignOptions] = useState(false);
   const [showUserSelection, setShowUserSelection] = useState(false);
   const [showSignOut, setShowSignOut] = useState(false);
+
+  const handleVideoClick = () => {
+    setShowSignOptions(true);
+  };
 
   const handleSignInClick = () => {
     setShowUserSelection(true);
@@ -22,15 +27,15 @@ const Signin = () => {
 
   return (
     <div className="container">
-      {!showUserSelection && !showSignOut ? (
-        <>
-          {/* Video Background (only visible when both are false) */}
-          <video autoPlay loop muted className="background-video">
-            <source src={video} type="video/mp4" />
+      {!showSignOptions ? (
+        <div className="video-container" onClick={handleVideoClick}>
+          <video autoPlay muted loop>
+            <source src={welcomeVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-
-          {/* Sign In Button with Image */}
+        </div>
+      ) : !showUserSelection && !showSignOut ? (
+        <>
           <div className="sign-button" onClick={handleSignInClick}>
             <img src={image1} alt="Sign In" className="sign-image" />
           </div>
