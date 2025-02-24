@@ -60,7 +60,6 @@
 
 /* 🔹 Image Styling */
 .selection-image {
-  width: 80%;
   height: 90%;
   object-fit: cover;
   border-radius: 15px;
