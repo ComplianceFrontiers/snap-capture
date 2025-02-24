@@ -4,8 +4,13 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f8f9fa; /* Semi-transparent background */
+  background: #f8f9fa; /* Default background */
   z-index: 1;
+}
+
+/* Black background only when video is displayed */
+.video-bg {
+  background: black;
 }
 
 /* Video Styling */

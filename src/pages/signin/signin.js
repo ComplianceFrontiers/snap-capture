@@ -26,7 +26,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="container">
+    <div className={`container ${!showSignOptions ? "video-bg" : ""}`}>
       {!showSignOptions ? (
         <div className="video-container" onClick={handleVideoClick}>
           <video autoPlay muted loop>
@@ -40,7 +40,6 @@ const Signin = () => {
             <img src={image1} alt="Sign In" className="sign-image" />
           </div>
 
-          {/* Sign Out Button with Image */}
           <div className="sign-button" onClick={handleSignOutClick}>
             <img src={image2} alt="Sign Out" className="sign-image" />
           </div>
