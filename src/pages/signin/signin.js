@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../signin/signin.css";
-import { FaCheck } from "react-icons/fa";
 import UserSelection from "../UserSelection/UserSelection"; // Import UserSelection component
 import SignOutContainer from "../signout/signout";
+import image1 from "../../images/7.png"; // Sign In
+import image2 from "../../images/8.png"; // Sign Out
 
 const Signin = () => {
   const [showUserSelection, setShowUserSelection] = useState(false);
@@ -22,13 +23,14 @@ const Signin = () => {
     <div className="container">
       {!showUserSelection && !showSignOut ? (
         <>
-          <div className="btn-sign-in" onClick={handleSignInClick}>
-            <FaCheck className="icon green" />
-            <span>Sign In</span>
+          {/* Sign In Button with Image */}
+          <div className="sign-button" onClick={handleSignInClick}>
+            <img src={image1} alt="Sign In" className="sign-image" />
           </div>
-          <div className="button btn-sign-out" onClick={handleSignOutClick}>
-            <FaCheck className="icon red" />
-            <span>Sign Out</span>
+
+          {/* Sign Out Button with Image */}
+          <div className="sign-button" onClick={handleSignOutClick}>
+            <img src={image2} alt="Sign Out" className="sign-image" />
           </div>
         </>
       ) : showUserSelection ? (
