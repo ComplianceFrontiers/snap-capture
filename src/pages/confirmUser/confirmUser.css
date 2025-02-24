@@ -33,9 +33,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 380px; /* Increased width */
-  min-height: 220px; /* Adjusted height */
+  width: fit-content; /* Adjust width dynamically */
+  min-width: 380px; /* Ensures minimum size */
+  padding: 15px;
+  max-width: 90%; /* Limits expansion on large screens */
   border-radius: 12px;
   font-size: 14px;
   font-weight: bold;
@@ -43,7 +44,6 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
-  padding: 15px;
   background: #fff;
   margin-top: 15px;
   overflow: hidden; /* Prevents content from spilling out */
@@ -107,33 +107,32 @@
   padding: 12px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 340px; /* Adjusted for better fit */
+  width: fit-content; /* Adjusts dynamically */
+  max-width: 100%;
   text-align: left;
   font-size: 14px;
   color: #333;
   border: 1px solid #ddd;
   margin-top: 12px;
-  word-wrap: break-word; /* Prevents text from overflowing */
+  word-wrap: break-word; /* Ensures wrapping */
 }
 
 .user-details p {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Prevents breaking */
   justify-content: space-between;
   align-items: center;
   padding: 8px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
   gap: 5px;
-  word-break: break-word; /* Ensures long words wrap */
+  white-space: nowrap; /* Prevents line breaks */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Shows '...' for long text */
+  width: 100%;
 }
 
-.user-details p:last-child {
-  border-bottom: none;
-}
-
-.user-details span {
+.user-details p span {
   font-weight: 600;
   color: #555;
   min-width: 120px;
@@ -141,18 +140,14 @@
   text-align: left;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .selection-box {
-    max-width: 500px; /* Adjusted for smaller screens */
+    min-width: 100%;
+    max-width: 100%;
   }
 
   .user-details {
-    max-width: 500px; /* Responsive max-width */
-  }
-
-  .confirm-button2 {
-    font-size: 16px;
-    padding: 8px 16px;
+    max-width: 100%;
+    overflow-x: auto; /* Allows scrolling */
   }
 }
