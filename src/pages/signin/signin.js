@@ -4,7 +4,7 @@ import UserSelection from "../UserSelection/UserSelection"; // Import UserSelect
 import SignOutContainer from "../signout/signout";
 import image1 from "../../images/7.png"; // Sign In
 import image2 from "../../images/8.png"; // Sign Out
-
+import video from "../../video/welcomevideo.mp4";
 const Signin = () => {
   const [showUserSelection, setShowUserSelection] = useState(false);
   const [showSignOut, setShowSignOut] = useState(false);
