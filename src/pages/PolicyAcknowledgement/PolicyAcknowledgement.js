@@ -40,10 +40,10 @@ const PolicyAcknowledgement = ({ user }) => {
       
       {/* Policy Content */}
       <div className="policy-content">
-        <h2>Facility Usage Policies for Bellevue Community Center</h2>
+        <h2>Chess Champs LLC – Program Terms and Conditions
+        </h2>
         <p>
-          The BELLEVUE COMMUNITY CENTER (BCC) serves as a resource providing services to a broad community. One component of our service delivery is to offer meeting and activity space to groups or individuals. Nonprofit organizations, other groups, and individuals may request the use of the facility during or outside regular operating hours. 
-         </p>
+        Welcome to Chess Champs LLC’s chess program! By enrolling your child in this program, you acknowledge and agree to the following terms and conditions. Chess Champs LLC is committed to providing a fun, engaging, and educational experience that introduces children to the game of chess while fostering critical thinking, strategy, and sportsmanship.         </p>
         
         
 
