@@ -40,8 +40,8 @@ const PolicyAcknowledgement = ({ user }) => {
       
       {/* Policy Content */}
       <div className="policy-content">
-        <h2>Chess Champs LLC – Program Terms and Conditions
-        </h2>
+        <h3>Chess Champs LLC – Program Terms and Conditions
+        </h3>
         <p>
         Welcome to Chess Champs LLC’s chess program! By enrolling your child in this program, you acknowledge and agree to the following terms and conditions. Chess Champs LLC is committed to providing a fun, engaging, and educational experience that introduces children to the game of chess while fostering critical thinking, strategy, and sportsmanship.         </p>
         
