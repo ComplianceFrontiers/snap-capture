@@ -1,9 +1,22 @@
 .container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f8f9fa;
+  background: #f8f9fa; /* Semi-transparent background */
+  z-index: 1;
+}
+
+/* 🎥 Video Background */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Ensure video stays in the background */
 }
 
 /* 🔹 Sign-In / Sign-Out Buttons with Images */
@@ -20,6 +33,7 @@
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   overflow: hidden; /* Ensures images fit inside */
+  z-index: 2; /* Keeps buttons above video */
 }
 
 .sign-button:hover {
